@@ -1,0 +1,88 @@
+.seccion-contacto {
+  background: #fff;
+  padding: 3rem 1.5rem 4rem;
+}
+
+.seccion-contacto__titulo {
+  margin: 0 0 2rem;
+  font-size: clamp(1.5rem, 3vw, 2rem);
+  font-weight: 700;
+  color: #000;
+  text-align: center;
+}
+
+.seccion-contacto__grid {
+  display: grid;
+  grid-template-columns: repeat(5, 1fr);
+  gap: 1.25rem;
+  max-width: 1100px;
+  margin: 0 auto;
+}
+
+.seccion-contacto__tarjeta {
+  background: #000;
+  border-radius: 10px;
+  padding: 1.5rem 1rem;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  text-align: center;
+  border: 1px solid #333;
+  box-shadow: 0 2px 8px rgba(0, 0, 0, 0.2);
+  transition: transform 0.25s ease, box-shadow 0.25s ease;
+}
+
+.seccion-contacto__tarjeta:hover {
+  transform: scale(1.05);
+  box-shadow: 0 8px 24px rgba(196, 30, 58, 0.5), 0 4px 12px rgba(196, 30, 58, 0.3);
+}
+
+.seccion-contacto__icono {
+  width: 48px;
+  height: 48px;
+  margin-bottom: 0.75rem;
+  color: #c41e3a;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+}
+
+.seccion-contacto__icono svg {
+  width: 28px;
+  height: 28px;
+}
+
+.seccion-contacto__texto {
+  margin: 0;
+  font-size: 0.95rem;
+  line-height: 1.4;
+  color: #fff;
+  transition: color 0.2s;
+}
+
+.seccion-contacto__tarjeta:hover .seccion-contacto__texto {
+  color: #c41e3a;
+}
+
+.seccion-contacto__texto--link {
+  color: #fff;
+  text-decoration: none;
+  font-weight: 500;
+}
+
+.seccion-contacto__texto--link:hover {
+  color: #c41e3a;
+  text-decoration: underline;
+}
+
+@media (max-width: 900px) {
+  .seccion-contacto__grid {
+    grid-template-columns: repeat(2, 1fr);
+  }
+}
+
+@media (max-width: 500px) {
+  .seccion-contacto__grid {
+    grid-template-columns: 1fr;
+  }
+}

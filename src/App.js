@@ -4,6 +4,7 @@ import Navbar from './components/Navbar';
 import LogoModal from './components/LogoModal';
 import Carousel from './components/Carousel';
 import Valores from './components/Valores';
+import SeccionContacto from './components/SeccionContacto';
 import EmpresaCards from './components/EmpresaCards';
 import BannerHangar from './components/BannerHangar';
 import Footer from './components/Footer';
@@ -82,6 +83,8 @@ function App() {
       <EmpresaCards />
 
       <Valores />
+
+      <SeccionContacto />
 
       <Footer onLogoClick={() => setShowLogoModal(true)} />
 

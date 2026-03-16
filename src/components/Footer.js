@@ -11,7 +11,7 @@ function Footer({ onLogoClick }) {
   };
 
   return (
-    <footer id="contacto" className="footer">
+    <footer id="pie" className="footer">
       <div className="footer__contenido">
         <AnimateOnScroll className="footer__col footer__col--logo" delay={0}>
           <a href="#inicio" className="footer__logo-link" onClick={handleLogoClick}>
@@ -32,7 +32,7 @@ function Footer({ onLogoClick }) {
           <ul className="footer__lista">
             <li><a href="#inicio" className="footer__link">Inicio</a></li>
             <li><a href="#nosotros" className="footer__link">Nosotros</a></li>
-            <li><a href="#historia" className="footer__link">Historia</a></li>
+            <li><a href="#contacto" className="footer__link">Contacto</a></li>
             <li><a href="#contacto" className="footer__link">Contacto</a></li>
           </ul>
         </AnimateOnScroll>
