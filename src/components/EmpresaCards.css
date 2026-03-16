@@ -1,0 +1,100 @@
+.empresa-cards {
+  background: #1a1a1a;
+  padding: 3rem 1.5rem 4rem;
+  position: relative;
+}
+
+.empresa-cards__titulo-seccion {
+  margin: 0 0 0.75rem;
+  font-size: clamp(1.5rem, 3.5vw, 2.25rem);
+  font-weight: 700;
+  color: #fff;
+  text-align: center;
+  text-transform: uppercase;
+  letter-spacing: 0.08em;
+}
+
+.empresa-cards__linea {
+  width: 80px;
+  height: 4px;
+  margin: 0 auto 1.5rem;
+  background: #c41e3a;
+  border-radius: 2px;
+}
+
+.empresa-cards__intro {
+  max-width: 720px;
+  margin: 0 auto 2.5rem;
+  text-align: center;
+}
+
+.empresa-cards__intro-texto {
+  margin: 0;
+  font-size: 1.05rem;
+  line-height: 1.75;
+  color: rgba(255, 255, 255, 0.9);
+}
+
+.empresa-cards__grid {
+  display: grid;
+  grid-template-columns: repeat(3, 1fr);
+  gap: 2rem;
+  max-width: 1100px;
+  margin: 0 auto;
+}
+
+.empresa-cards__tarjeta {
+  background: #fff;
+  border-radius: 12px;
+  padding: 2rem 1.5rem;
+  text-align: center;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  box-shadow: 0 4px 20px rgba(0, 0, 0, 0.15);
+}
+
+.empresa-cards__imagen-wrap {
+  width: 140px;
+  height: 140px;
+  border-radius: 50%;
+  overflow: hidden;
+  margin-bottom: 1.25rem;
+  flex-shrink: 0;
+}
+
+.empresa-cards__imagen {
+  width: 100%;
+  height: 100%;
+  object-fit: cover;
+  display: block;
+}
+
+.empresa-cards__titulo {
+  margin: 0 0 0.75rem;
+  font-size: 1.2rem;
+  font-weight: 700;
+  color: #000;
+}
+
+.empresa-cards__texto {
+  margin: 0;
+  font-size: 0.95rem;
+  line-height: 1.6;
+  color: #555;
+}
+
+/* Solo el contenedor Objetivo: texto un poco más compacto para que entre en un renglón menos */
+.empresa-cards__tarjeta--objetivo .empresa-cards__texto {
+  font-size: 0.95rem;
+  line-height: 1.5;
+}
+
+@media (max-width: 900px) {
+  .empresa-cards__grid {
+    grid-template-columns: 1fr;
+    max-width: 400px;
+    margin-left: auto;
+    margin-right: auto;
+  }
+}

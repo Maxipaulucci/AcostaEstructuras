@@ -1,0 +1,29 @@
+.marquee-bar {
+  background: #c41e3a;
+  color: #fff;
+  padding: 0.4rem 0;
+  overflow: hidden;
+  white-space: nowrap;
+  font-size: 0.85rem;
+  font-weight: 500;
+  letter-spacing: 0.02em;
+}
+
+.marquee-bar__track {
+  display: inline-block;
+  animation: marquee-bar-scroll 35s linear infinite;
+}
+
+.marquee-bar__text {
+  display: inline-block;
+  padding-right: 2rem;
+}
+
+@keyframes marquee-bar-scroll {
+  0% {
+    transform: translateX(0);
+  }
+  100% {
+    transform: translateX(-50%);
+  }
+}

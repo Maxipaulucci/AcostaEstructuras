@@ -1,0 +1,118 @@
+.consulta-modal {
+  position: fixed;
+  inset: 0;
+  z-index: 10000;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  padding: 1rem;
+}
+
+.consulta-modal__backdrop {
+  position: absolute;
+  inset: 0;
+  background: rgba(0, 0, 0, 0.5);
+}
+
+.consulta-modal__ventana {
+  position: relative;
+  background: #fff;
+  border: 2px solid #c41e3a;
+  border-radius: 8px;
+  max-width: 440px;
+  width: 100%;
+  box-shadow: 0 8px 32px rgba(0, 0, 0, 0.2);
+}
+
+.consulta-modal__encabezado {
+  display: flex;
+  align-items: flex-start;
+  justify-content: space-between;
+  padding: 1.25rem 1.25rem 0.5rem;
+}
+
+.consulta-modal__titulo {
+  margin: 0;
+  font-size: 1.15rem;
+  font-weight: 700;
+  color: #000;
+}
+
+.consulta-modal__cerrar {
+  width: 32px;
+  height: 32px;
+  border: none;
+  background: none;
+  font-size: 1.5rem;
+  line-height: 1;
+  color: #666;
+  cursor: pointer;
+  padding: 0;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  border-radius: 4px;
+  transition: color 0.2s, background 0.2s;
+}
+
+.consulta-modal__cerrar:hover {
+  color: #000;
+  background: #f0f0f0;
+}
+
+.consulta-modal__cuerpo {
+  padding: 0.5rem 1.25rem 1.25rem;
+}
+
+.consulta-modal__textarea-wrap {
+  position: relative;
+  margin-bottom: 1rem;
+}
+
+.consulta-modal__textarea {
+  width: 100%;
+  min-height: 120px;
+  padding: 0.75rem;
+  padding-bottom: 1.75rem;
+  border: 2px solid #c41e3a;
+  border-radius: 6px;
+  font-family: inherit;
+  font-size: 0.95rem;
+  line-height: 1.5;
+  resize: vertical;
+  box-sizing: border-box;
+}
+
+.consulta-modal__textarea::placeholder {
+  color: #999;
+}
+
+.consulta-modal__textarea:focus {
+  outline: none;
+  border-color: #a01830;
+}
+
+.consulta-modal__contador {
+  position: absolute;
+  bottom: 0.5rem;
+  right: 0.75rem;
+  font-size: 0.8rem;
+  color: #888;
+}
+
+.consulta-modal__btn {
+  width: 100%;
+  padding: 0.75rem 1rem;
+  background: #c41e3a;
+  color: #fff;
+  border: none;
+  border-radius: 6px;
+  font-size: 1rem;
+  font-weight: 600;
+  cursor: pointer;
+  transition: background 0.2s;
+}
+
+.consulta-modal__btn:hover {
+  background: #a01830;
+}
