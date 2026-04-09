@@ -1,4 +1,4 @@
-import React, { useState, useEffect, useMemo } from 'react';
+import React, { useState, useEffect, useLayoutEffect, useMemo, useRef } from 'react';
 import { createPortal } from 'react-dom';
 import AnimateOnScroll from './AnimateOnScroll';
 import './SeccionProyectos.css';
@@ -132,58 +132,111 @@ function getPorLinea() {
 
 function ModalGaleria({ proyecto, onCerrar }) {
   const tituloId = `modal-galeria-titulo-${proyecto.id}`;
+  const [imagenGrande, setImagenGrande] = useState(null);
 
   useEffect(() => {
     const onKey = (e) => {
-      if (e.key === 'Escape') onCerrar();
+      if (e.key !== 'Escape') return;
+      if (imagenGrande) {
+        setImagenGrande(null);
+        return;
+      }
+      onCerrar();
     };
     document.addEventListener('keydown', onKey);
     return () => document.removeEventListener('keydown', onKey);
-  }, [onCerrar]);
+  }, [onCerrar, imagenGrande]);
 
   if (typeof document === 'undefined') return null;
 
   return createPortal(
-    <div
-      className="seccion-proyectos-modal"
-      role="dialog"
-      aria-modal="true"
-      aria-labelledby={tituloId}
-    >
-      <button
-        type="button"
-        className="seccion-proyectos-modal__backdrop"
-        aria-label="Cerrar galería"
-        onClick={onCerrar}
-      />
-      <div className="seccion-proyectos-modal__panel">
-        <div className="seccion-proyectos-modal__cabecera">
-          <h3 id={tituloId} className="seccion-proyectos-modal__titulo">
-            {proyecto.nombre}
-          </h3>
-          <button type="button" className="seccion-proyectos-modal__cerrar" onClick={onCerrar} aria-label="Cerrar">
-            ×
-          </button>
-        </div>
-        <div className="seccion-proyectos-modal__galeria">
-          {proyecto.imagenes.map((src, i) => (
-            <figure key={src} className="seccion-proyectos-modal__fig">
-              <img
-                src={encodeURI(src)}
-                alt={`${proyecto.nombre} — imagen ${i + 1} de ${proyecto.imagenes.length}`}
-                className="seccion-proyectos-modal__img"
-                loading="lazy"
-              />
-            </figure>
-          ))}
+    <>
+      <div
+        className="seccion-proyectos-modal"
+        role="dialog"
+        aria-modal="true"
+        aria-labelledby={tituloId}
+      >
+        <button
+          type="button"
+          className="seccion-proyectos-modal__backdrop"
+          aria-label="Cerrar galería"
+          onClick={onCerrar}
+        />
+        <div className="seccion-proyectos-modal__panel">
+          <div className="seccion-proyectos-modal__cabecera">
+            <h3 id={tituloId} className="seccion-proyectos-modal__titulo">
+              {proyecto.nombre}
+            </h3>
+            <button type="button" className="seccion-proyectos-modal__cerrar" onClick={onCerrar} aria-label="Cerrar">
+              ×
+            </button>
+          </div>
+          <div className="seccion-proyectos-modal__galeria">
+            {proyecto.imagenes.map((src, i) => {
+              const srcEncoded = encodeURI(src);
+              const altMini = `${proyecto.nombre} — imagen ${i + 1} de ${proyecto.imagenes.length}`;
+              return (
+                <figure key={src} className="seccion-proyectos-modal__fig">
+                  <button
+                    type="button"
+                    className="seccion-proyectos-modal__thumb"
+                    onClick={() => setImagenGrande({ src: srcEncoded, alt: altMini })}
+                    aria-label={`Ampliar imagen ${i + 1}`}
+                  >
+                    <img
+                      src={srcEncoded}
+                      alt={altMini}
+                      className="seccion-proyectos-modal__img"
+                      loading="lazy"
+                    />
+                  </button>
+                </figure>
+              );
+            })}
+          </div>
         </div>
       </div>
-    </div>,
+
+      {imagenGrande ? (
+        <div
+          className="seccion-proyectos-modal-lightbox"
+          role="dialog"
+          aria-modal="true"
+          aria-label="Imagen ampliada"
+        >
+          <button
+            type="button"
+            className="seccion-proyectos-modal-lightbox__backdrop"
+            aria-label="Cerrar vista ampliada"
+            onClick={() => setImagenGrande(null)}
+          />
+          <div className="seccion-proyectos-modal-lightbox__marco">
+            <button
+              type="button"
+              className="seccion-proyectos-modal-lightbox__cerrar"
+              onClick={() => setImagenGrande(null)}
+              aria-label="Cerrar"
+            >
+              ×
+            </button>
+            <img
+              src={imagenGrande.src}
+              alt={imagenGrande.alt}
+              className="seccion-proyectos-modal-lightbox__img"
+              decoding="async"
+            />
+          </div>
+        </div>
+      ) : null}
+    </>,
     document.body
   );
 }
 
 function SeccionProyectos() {
+  const carouselSurfaceRef = useRef(null);
+  const [flechaTopPx, setFlechaTopPx] = useState(null);
   const [porLinea, setPorLinea] = useState(getPorLinea);
   const [slide, setSlide] = useState(0);
   const [visualSlide, setVisualSlide] = useState(0);
@@ -250,6 +303,44 @@ function SeccionProyectos() {
     requestAnimationFrame(() => setSinTransicion(false));
   }, [porLinea]);
 
+  useLayoutEffect(() => {
+    if (totalSlides <= 1) {
+      setFlechaTopPx(null);
+      return;
+    }
+
+    const root = carouselSurfaceRef.current;
+    if (!root) return;
+
+    const sync = () => {
+      const imgWrap = root.querySelector('.seccion-proyectos__imagen-wrap');
+      if (!imgWrap) {
+        setFlechaTopPx(null);
+        return;
+      }
+      const rootRect = root.getBoundingClientRect();
+      const imgRect = imgWrap.getBoundingClientRect();
+      const center = imgRect.top + imgRect.height / 2 - rootRect.top;
+      setFlechaTopPx(Number.isFinite(center) ? center : null);
+    };
+
+    sync();
+
+    let ro;
+    if (typeof ResizeObserver !== 'undefined') {
+      ro = new ResizeObserver(sync);
+      ro.observe(root);
+      const firstImg = root.querySelector('.seccion-proyectos__imagen-wrap');
+      if (firstImg) ro.observe(firstImg);
+    }
+
+    window.addEventListener('resize', sync);
+    return () => {
+      ro?.disconnect();
+      window.removeEventListener('resize', sync);
+    };
+  }, [totalSlides, porLinea]);
+
   const handleTrackTransitionEnd = () => {
     if (totalSlides > 1 && visualSlide === totalSlides) {
       setSinTransicion(true);
@@ -271,6 +362,15 @@ function SeccionProyectos() {
       ) : null}
 
       <AnimateOnScroll className="seccion-proyectos__carousel-wrap" delay={0}>
+        <div
+          ref={carouselSurfaceRef}
+          className="seccion-proyectos__carousel-surface"
+          style={
+            flechaTopPx != null
+              ? { '--proyectos-flecha-top': `${flechaTopPx}px` }
+              : undefined
+          }
+        >
         <div className="seccion-proyectos__viewport" aria-live="polite">
           <div
             className={`seccion-proyectos__track ${sinTransicion ? 'seccion-proyectos__track--no-transition' : ''}`}
@@ -353,6 +453,7 @@ function SeccionProyectos() {
             </div>
           </>
         )}
+        </div>
       </AnimateOnScroll>
 
       <AnimateOnScroll className="seccion-proyectos__cta-wrap" delay={100}>
