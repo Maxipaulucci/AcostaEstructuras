@@ -3,13 +3,9 @@ import './Carousel.css';
 
 const RUTA_BASE = process.env.PUBLIC_URL || '';
 
-const IMAGENES = [
-  encodeURI(`${RUTA_BASE}/img/proyectos/proyecto inicio/proyecto 1.webp`),
-  encodeURI(`${RUTA_BASE}/img/proyectos/proyecto inicio/proyecto 2.png`),
-  encodeURI(`${RUTA_BASE}/img/proyectos/proyecto inicio/proyecto 3.jpg`),
-  encodeURI(`${RUTA_BASE}/img/proyectos/proyecto inicio/proyecto 4.jpg`),
-  encodeURI(`${RUTA_BASE}/img/proyectos/proyecto inicio/proyecto 5.jpg`),
-];
+const IMAGENES = [1, 2, 3, 4, 5].map((n) =>
+  encodeURI(`${RUTA_BASE}/img/proyectos/proyecto inicio/proyecto ${n}.jpeg`)
+);
 
 const NOMBRES_PROYECTOS = [
   'Proyecto 1',
