@@ -22,8 +22,22 @@ function ConsultaModal({ isOpen, onClose, numeroWhatsApp }) {
 
   const handleIrAlChat = () => {
     const texto = mensaje.trim() || '';
-    const url = `https://wa.me/${numeroWhatsApp}${texto ? `?text=${encodeURIComponent(texto)}` : ''}`;
-    window.open(url, '_blank', 'noopener,noreferrer');
+    const textoCodificado = texto ? encodeURIComponent(texto) : '';
+    const esResponsive = window.matchMedia('(max-width: 768px)').matches;
+
+    if (esResponsive) {
+      // En mobile intentamos abrir la app. Si no está instalada, cae a wa.me
+      const appUrl = `whatsapp://send?phone=${numeroWhatsApp}${textoCodificado ? `&text=${textoCodificado}` : ''}`;
+      const fallbackUrl = `https://wa.me/${numeroWhatsApp}${textoCodificado ? `?text=${textoCodificado}` : ''}`;
+      window.location.href = appUrl;
+      setTimeout(() => {
+        window.open(fallbackUrl, '_blank', 'noopener,noreferrer');
+      }, 900);
+    } else {
+      // En desktop abrimos WhatsApp Web directamente
+      const webUrl = `https://web.whatsapp.com/send?phone=${numeroWhatsApp}${textoCodificado ? `&text=${textoCodificado}` : ''}`;
+      window.open(webUrl, '_blank', 'noopener,noreferrer');
+    }
     onClose();
   };
 

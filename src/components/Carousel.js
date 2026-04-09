@@ -4,11 +4,11 @@ import './Carousel.css';
 const RUTA_BASE = process.env.PUBLIC_URL || '';
 
 const IMAGENES = [
-  encodeURI(`${RUTA_BASE}/img/proyectos/proyecto 1.webp`),
-  encodeURI(`${RUTA_BASE}/img/proyectos/proyecto 2.png`),
-  encodeURI(`${RUTA_BASE}/img/proyectos/proyecto 3.jpg`),
-  encodeURI(`${RUTA_BASE}/img/proyectos/proyecto 4.jpg`),
-  encodeURI(`${RUTA_BASE}/img/proyectos/proyecto 5.jpg`),
+  encodeURI(`${RUTA_BASE}/img/proyectos/proyecto inicio/proyecto 1.webp`),
+  encodeURI(`${RUTA_BASE}/img/proyectos/proyecto inicio/proyecto 2.png`),
+  encodeURI(`${RUTA_BASE}/img/proyectos/proyecto inicio/proyecto 3.jpg`),
+  encodeURI(`${RUTA_BASE}/img/proyectos/proyecto inicio/proyecto 4.jpg`),
+  encodeURI(`${RUTA_BASE}/img/proyectos/proyecto inicio/proyecto 5.jpg`),
 ];
 
 const NOMBRES_PROYECTOS = [
@@ -79,7 +79,7 @@ function Carousel() {
         onClick={anterior}
         aria-label="Imagen anterior"
       >
-        ‹
+        <span className="carousel__btn-icon" aria-hidden="true">‹</span>
       </button>
       <button
         type="button"
@@ -87,7 +87,7 @@ function Carousel() {
         onClick={siguiente}
         aria-label="Siguiente imagen"
       >
-        ›
+        <span className="carousel__btn-icon" aria-hidden="true">›</span>
       </button>
 
       <div className="carousel__thumbs" role="tablist" aria-label="Seleccionar proyecto">

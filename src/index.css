@@ -2,6 +2,14 @@ html {
   scroll-behavior: smooth;
 }
 
+/* Compensar la barra de navegación fija al hacer scroll a anclas */
+[id="inicio"],
+[id="nosotros"],
+[id="contacto"],
+[id="proyectos"] {
+  scroll-margin-top: 5rem;
+}
+
 html,
 body,
 #root {

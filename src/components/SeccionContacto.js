@@ -36,10 +36,10 @@ const ICONO_RELOJ = (
 );
 
 const TARJETAS = [
-  { id: 'tel', icono: ICONO_TEL, texto: 'Tel: (011) 1234-5678' },
-  { id: 'email', icono: ICONO_EMAIL, texto: 'contacto@ejemplo.com', esEnlace: true, href: 'mailto:contacto@ejemplo.com' },
-  { id: 'whatsapp', icono: ICONO_WHATSAPP, texto: 'WhatsApp: 11 1234-5678' },
-  { id: 'ubicacion', icono: ICONO_UBICACION, texto: 'Lautaro 868, Merlo, Buenos Aires' },
+  { id: 'tel', icono: ICONO_TEL, texto: 'Tel: (0220) 4802969' },
+  { id: 'email', icono: ICONO_EMAIL, texto: 'acostahnos@yahoo.com.ar', esEnlace: true, href: 'mailto:acostahnos@yahoo.com.ar' },
+  { id: 'whatsapp', icono: ICONO_WHATSAPP, texto: 'WhatsApp: 11-5383-7427' },
+  { id: 'ubicacion', icono: ICONO_UBICACION, texto: 'Lautaro 868, Merlo-Buenos Aires' },
   { id: 'horarios', icono: ICONO_RELOJ, texto: 'Lun. a Vie.: 8:00 a 17:00 hs' },
 ];
 

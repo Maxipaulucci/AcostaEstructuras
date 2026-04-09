@@ -19,10 +19,12 @@ function BannerHangar() {
         </div>
         <div className="banner-hangar__texto-wrap">
           <h2 id="banner-hangar-titulo" className="banner-hangar__titulo">
-            Proyectos que hablan por nosotros
+            SISTEMA LLAVE EN MANO
           </h2>
           <p className="banner-hangar__parrafo">
-            A lo largo de más de tres décadas hemos concretado cientos de obras de estructuras metálicas, tinglados, galpones y techos. Empresas de distintos rubros confiaron en nosotros para llevar adelante sus proyectos. Calidad, responsabilidad y atención personalizada en cada obra.
+            Ofrecemos al cliente la posibilidad de llevar a cabo su proyecto desde el principio al fin de la obra.
+            Movimiento de suelo, nivelaciones, entoscado, fundaciones, piso industrial.
+            Toda la obra civil y metalica en una sola empresa, facilitando la contratacion, acortando tiempos, aumentando precision y calidad de terminacion.
           </p>
         </div>
       </section>

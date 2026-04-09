@@ -2,7 +2,7 @@ import React, { useState } from 'react';
 import ConsultaModal from './ConsultaModal';
 import './WhatsAppFloat.css';
 
-const WHATSAPP_NUMERO = '5491112345678';
+const WHATSAPP_NUMERO = '5491153837427';
 
 function WhatsAppFloat() {
   const [showModal, setShowModal] = useState(false);

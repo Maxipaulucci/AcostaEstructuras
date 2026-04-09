@@ -32,7 +32,7 @@ const TARJETAS = [
   {
     id: 'materiales',
     imagen: `${RUTA_BASE}/img/nosotros/materiales.jpg`,
-    titulo: 'Materiales',
+    titulo: 'Servicios',
     texto: 'Proporcionamos una amplia variedad de alternativas para cada proyecto, combinando materiales de calidad y un trabajo preciso en cada detalle. Analizamos las necesidades de cada cliente para dar soluciones funcionales y duraderas. Acompañamos todo el proceso, desde la planificación inicial hasta la finalización de la obra, garantizando un resultado acorde a las expectativas.',
   },
   {
@@ -45,7 +45,7 @@ const TARJETAS = [
 
 function EmpresaCards() {
   return (
-    <section className="empresa-cards" aria-labelledby="nosotros-cards-titulo">
+    <section id="nosotros" className="empresa-cards" aria-labelledby="nosotros-cards-titulo">
       <h2 id="nosotros-cards-titulo" className="empresa-cards__titulo-seccion">
         Nosotros
       </h2>

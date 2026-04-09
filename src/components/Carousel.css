@@ -157,19 +157,39 @@
   height: 48px;
   border: none;
   border-radius: 50%;
-  background: transparent;
-  color: #fff;
+  background: rgba(0, 0, 0, 0.6);
+  color: #c41e3a;
   font-size: 2.5rem;
   line-height: 1;
   cursor: pointer;
   display: flex;
   align-items: center;
   justify-content: center;
+  padding: 0;
   transition: opacity 0.2s;
+}
+
+.carousel__btn-icon {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  width: 1em;
+  height: 1em;
+  line-height: 1;
+  transform: translateY(-2px);
+}
+
+.carousel__btn--prev .carousel__btn-icon {
+  transform: translate(-1px, -2px);
+}
+
+.carousel__btn--next .carousel__btn-icon {
+  transform: translate(1px, -2px);
 }
 
 .carousel__btn:hover {
   opacity: 0.85;
+  color: #c41e3a;
 }
 
 .carousel__btn--prev {
@@ -221,7 +241,7 @@
 }
 
 .carousel__thumb--activo {
-  box-shadow: 0 0 0 3px #000;
+  box-shadow: 0 0 0 3px #fff;
 }
 
 .carousel__thumb-img-wrap {

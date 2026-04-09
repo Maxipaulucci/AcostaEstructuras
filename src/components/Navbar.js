@@ -40,6 +40,7 @@ function Navbar({ onLogoClick }) {
         <a href="#inicio" className="navbar__link" onClick={(e) => { handleAnchorClick(e); cerrarMenu(); }}>Inicio</a>
         <a href="#nosotros" className="navbar__link" onClick={(e) => { handleAnchorClick(e); cerrarMenu(); }}>Nosotros</a>
         <a href="#contacto" className="navbar__link" onClick={(e) => { handleAnchorClick(e); cerrarMenu(); }}>Contacto</a>
+        <a href="#proyectos" className="navbar__link" onClick={(e) => { handleAnchorClick(e); cerrarMenu(); }}>Proyectos</a>
       </nav>
 
       <a href="#contacto" className="navbar__cta" onClick={handleAnchorClick}>Contactanos!</a>
@@ -60,6 +61,7 @@ function Navbar({ onLogoClick }) {
           <a href="#inicio" className="navbar__menu-link" onClick={(e) => { handleAnchorClick(e); cerrarMenu(); }}>Inicio</a>
           <a href="#nosotros" className="navbar__menu-link" onClick={(e) => { handleAnchorClick(e); cerrarMenu(); }}>Nosotros</a>
           <a href="#contacto" className="navbar__menu-link" onClick={(e) => { handleAnchorClick(e); cerrarMenu(); }}>Contacto</a>
+          <a href="#proyectos" className="navbar__menu-link" onClick={(e) => { handleAnchorClick(e); cerrarMenu(); }}>Proyectos</a>
         </div>
       </div>
 
